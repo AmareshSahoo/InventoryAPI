@@ -25,6 +25,7 @@ app.use(cookieParser());
 // Enable CORS
 app.use(cors());
 
+app.get("/", (req, res) => { res.status(200).send("WELCOME TO INVENTORY API BY AMARESH SAHOO") });
 
 // routers
 app.use('/api/v1/users', users);
