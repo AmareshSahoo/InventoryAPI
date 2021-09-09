@@ -1,12 +1,27 @@
 [
   {
     "airport_name": "Indira Gandhi International Airport, Delhi",
-    "fuel_capacity": 25066,
-    "fuel_available": 25066
+    "fuel_capacity": 250666,
+    "fuel_available": 250666
   },
   {
     "airport_name": "Rajiv Gandhi International Airport, Hyderabad",
     "fuel_capacity": 350732,
     "fuel_available": 350732
+  },
+  {
+    "airport_name": "Netaji Subhas Chandra Airport",
+    "fuel_capacity": 550666,
+    "fuel_available": 550666
+  },
+  {
+    "airport_name": "Chhatrapati Shivaji Airport",
+    "fuel_capacity": 360732,
+    "fuel_available": 360732
+  },
+  {
+    "airport_name": "Calicut International Airport",
+    "fuel_capacity": 270666,
+    "fuel_available": 270666
   }
 ]

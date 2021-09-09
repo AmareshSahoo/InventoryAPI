@@ -10,5 +10,23 @@
         "airline": "Go Air"	,
         "source": "GOA",
         "destination": "MUMBAI"
+    },
+    {
+        "aircraft_no": "6E263",
+        "airline": "Spice Jet",
+        "source": "BHUBANESHWAR",
+        "destination": "MUMBAI"
+    },
+    {
+        "aircraft_no": "6E315",
+        "airline": "Go First",
+        "source": "GOA",
+        "destination": "MUMBAI"
+    },
+    {
+        "aircraft_no": "6E342",
+        "airline": "Air India"	,
+        "source": "CHENNAI",
+        "destination": "GUWAHATI"
     }
 ]
