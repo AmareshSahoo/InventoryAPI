@@ -1,14 +1,10 @@
 const express = require('express');
+const router = express.Router();
+
 const {register, login} = require('../controllers/users');
 const {getAirports} = require('../controllers/airport');
 const {getAircrafts} = require('../controllers/aircraft');
 const {getTransactions , createTransaction,getReports } = require('../controllers/transaction');
-
-
-
-const User = require('../models/user');
-
-const router = express.Router();
 
 router.post('user/signup', register)
 router.post('user/login', login)
