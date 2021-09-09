@@ -1,0 +1,14 @@
+[
+    {
+        "aircraft_no": "6E292",
+        "airline": "IndiGo"	,
+        "source": "CHENNAI",
+        "destination": "GUWAHATI"
+    },
+    {
+        "aircraft_no": "6E9438",
+        "airline": "Go Air"	,
+        "source": "GOA",
+        "destination": "MUMBAI"
+    }
+]

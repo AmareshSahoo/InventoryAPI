@@ -6,7 +6,11 @@ const dotenv = require('dotenv');
 dotenv.config({ path: './config/config.env' });
 
 // Load models
-const User = require('./models/User');
+const User = require('./models/user');
+const Airport = require('./models/airport');
+const Aircraft = require('./models/aircraft');
+const Transaction = require('./models/transaction');
+
 
 // Connect to DB
 mongoose.connect(process.env.MONGO_URI, {
@@ -16,47 +20,42 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true
 });
 
-// Read JSON files
-const bootcamps = JSON.parse(
-  fs.readFileSync(`${__dirname}/_data/bootcamps.json`, 'utf-8')
-);
-
-const courses = JSON.parse(
-  fs.readFileSync(`${__dirname}/_data/courses.json`, 'utf-8')
-);
-
 const users = JSON.parse(
-  fs.readFileSync(`${__dirname}/_data/users.json`, 'utf-8')
-);
-
-const reviews = JSON.parse(
-  fs.readFileSync(`${__dirname}/_data/reviews.json`, 'utf-8')
-);
-
-// Import into DB
-const importData = async () => {
-  try {
-    await User.create(users);
-    console.log('Data Imported...');
-    process.exit();
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-// Delete data
-const deleteData = async () => {
-  try {
-    await User.deleteMany();
-    console.log('Data Destroyed...');
-    process.exit();
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-if (process.argv[2] === '-i') {
-  importData();
-} else if (process.argv[2] === '-d') {
-  deleteData();
-}
+  fs.readFileSync(`${__dirname}/_data/Users.json`, 'utf-8')
+  );
+  const airports = JSON.parse(
+    fs.readFileSync(`${__dirname}/_data/airport.json`, 'utf-8')
+    );
+    
+    const aircrafts = JSON.parse(
+      fs.readFileSync(`${__dirname}/_data/aircrafts.json`, 'utf-8')
+      );
+      
+      const transactions = JSON.parse(
+        fs.readFileSync(`${__dirname}/_data/transaction.json`, 'utf-8')
+        );
+        
+        
+        // Import into DB
+        const importData = async () => {
+          try {
+            // await User.deleteMany();
+            await Airport.deleteMany();
+            await Aircraft.deleteMany();
+            await Transaction.deleteMany();
+            
+            // await User.create(users);
+            await Airport.create(airports);
+            await Aircraft.create(aircrafts);
+            
+            console.log('Data Imported...');
+            process.exit();
+          } catch (err) {
+            console.error(err);
+          }
+        };
+        
+        importData();
+        
+        
+        

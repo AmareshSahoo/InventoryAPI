@@ -12,7 +12,7 @@ dotenv.config({ path: './config/config.env' });
 connectDB();
 
 // Route files
-const users = require('./routes/users');
+const routes = require('./routes/routes');
 
 const app = express();
 
@@ -28,7 +28,7 @@ app.use(cors());
 app.get("/", (req, res) => { res.status(200).send("WELCOME TO INVENTORY API BY AMARESH SAHOO") });
 
 // routers
-app.use('/api/v1/users', users);
+app.use('/api/v1/', routes);
 
 app.use(errorHandler);
 
