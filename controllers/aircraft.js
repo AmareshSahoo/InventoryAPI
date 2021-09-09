@@ -8,7 +8,7 @@ const Aircraft = require('../models/aircraft');
 exports.getAircrafts = asyncHandler(async (req, res, next) => {
 
   // Query Aircraft
-  const result = await Aircraft.find({});
+  const result = await Aircraft.find({}).sort({ "aircraft_no": 1 });
   
   if (!result) {
     return next(new ErrorResponse('Unable to Fetch Aircraft Data, Something went wrong...', 401));

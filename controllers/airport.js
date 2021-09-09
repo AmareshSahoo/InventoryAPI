@@ -8,7 +8,7 @@ const Airport = require('../models/airport');
 exports.getAirports = asyncHandler(async (req, res, next) => {
 
   // Query Airports
-  const result = await Airport.find({});
+  const result = await Airport.find({}).sort({ "airport_name": 1 });;
   
   if (!result) {
     return next(new ErrorResponse('Unable to Fetch Airport Data, Something went wrong...', 401));
