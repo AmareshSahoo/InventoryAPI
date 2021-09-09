@@ -6,7 +6,7 @@ const {getTransactions , createTransaction,getReports } = require('../controller
 
 
 
-const User = require('../models/User');
+const User = require('../models/user');
 
 const router = express.Router();
 
