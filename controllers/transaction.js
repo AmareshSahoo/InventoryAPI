@@ -12,7 +12,10 @@ const Aircraft = require('../models/aircraft');
 exports.getTransactions = asyncHandler(async (req, res, next) => {
     
     // Query Transactions
-    const result = await Transaction.find({}).sort({"transaction_date_time": -1});
+    const result = await Transaction.find({})
+    .populate("airport_id")
+    .populate("aircraft_id")
+    .sort({"transaction_date_time": -1});
     
     if (!result) {
         return next(new ErrorResponse('Unable to Fetch Transaction Data, Something went wrong...', 401));
