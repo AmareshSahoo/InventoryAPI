@@ -24,27 +24,27 @@ const users = JSON.parse(
   fs.readFileSync(`${__dirname}/_data/Users.json`, 'utf-8')
   );
   const airports = JSON.parse(
-    fs.readFileSync(`${__dirname}/_data/airport.json`, 'utf-8')
+    fs.readFileSync(`${__dirname}/_data/Airport.json`, 'utf-8')
     );
     
     const aircrafts = JSON.parse(
-      fs.readFileSync(`${__dirname}/_data/aircrafts.json`, 'utf-8')
+      fs.readFileSync(`${__dirname}/_data/Aircrafts.json`, 'utf-8')
       );
       
       const transactions = JSON.parse(
-        fs.readFileSync(`${__dirname}/_data/transaction.json`, 'utf-8')
+        fs.readFileSync(`${__dirname}/_data/Transaction.json`, 'utf-8')
         );
         
         
         // Import into DB
         const initData = async () => {
           try {
-            // await User.deleteMany();
+            await User.deleteMany();
             await Airport.deleteMany();
             await Aircraft.deleteMany();
             await Transaction.deleteMany();
             
-            // await User.create(users);
+            await User.create(users);
             await Airport.create(airports);
             await Aircraft.create(aircrafts);
             
