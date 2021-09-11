@@ -37,7 +37,7 @@ const users = JSON.parse(
         
         
         // Import into DB
-        const importData = async () => {
+        const initData = async () => {
           try {
             // await User.deleteMany();
             await Airport.deleteMany();
@@ -49,13 +49,12 @@ const users = JSON.parse(
             await Aircraft.create(aircrafts);
             
             console.log('Data Imported...');
-            process.exit();
+            return true;
           } catch (err) {
             console.error(err);
           }
         };
         
-        importData();
-        
-        
-        
+        // initData();
+
+module.exports = initData;

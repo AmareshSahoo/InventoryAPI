@@ -54,15 +54,16 @@ exports.createTransaction = asyncHandler(async (req, res, next) => {
         return next(new ErrorResponse(`Full availability is exceeded. Fuel capacity is ${airport.fuel_capacity}, Fuel Available is ${airport.fuel_available}`, 401));
     }
     
-    if(transaction_type === "OUT" && !aircraft_id){
+    if(transaction_type === "OUT" && aircraft_id === null){
         return next(new ErrorResponse(`aircraft_id is required`, 401)); 
     }
     
-    // Check for aircraft
-    const aircraft = await Aircraft.findOne({ _id: aircraft_id });
-    
-    if (!aircraft) {
-        return next(new ErrorResponse('aircraft_id not Exist', 401));
+    if(aircraft_id != null){
+        // Check for aircraft
+        const aircraft = await Aircraft.findOne({ _id: aircraft_id });
+        if (!aircraft) {
+            return next(new ErrorResponse('aircraft_id not Exist', 401));
+        }
     }
     
     // Create transaction
