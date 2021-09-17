@@ -90,6 +90,20 @@ exports.getReports = asyncHandler(async (req, res, next) => {
     // Query Transactions
     const result = await Transaction.find({}).populate("airport_id").populate("aircraft_id");
     
+    const ress =  await Transaction.aggregate([
+        { 
+            $group: {
+                _id: "$airport_id",
+                doc: {
+                    $push : "$$ROOT"
+                }
+            }
+        }
+    ]);
+    
+    await Airport.populate(ress, {path: 'doc.airport_id'});
+    await Aircraft.populate(ress, {path: 'doc.aircraft_id'});
+    
     if (!result) {
         return next(new ErrorResponse('Unable to generate reports, Something went wrong...', 401));
     }
@@ -103,7 +117,7 @@ exports.getReports = asyncHandler(async (req, res, next) => {
     
     res.status(200).json({
         success: true,
-        data: grouped,
+        data: ress,
         message: "Fetch Report Data Successfully...",
     });
     
